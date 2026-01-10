@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Main Page</title>
+</head>
+<body>
+    <h1>Main Page</h1>
+    <button id="open-popup" onclick="window.open('popup.html', '_blank', 'width=400,height=400')">Open Popup</button>
+    <button id="final-button">Final Action</button>
+    <div id="result"></div>
+    <script>
+        document.getElementById('final-button').onclick = () => {
+            document.getElementById('result').innerText = 'Final Clicked';
+        }
+    </script>
+</body>
+</html>

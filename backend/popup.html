@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Popup Page</title>
+</head>
+<body>
+    <h1>Popup</h1>
+    <button id="popup-button">Click Me</button>
+    <script>
+        document.getElementById('popup-button').onclick = () => {
+            document.body.innerHTML += '<p>Clicked!</p>';
+            setTimeout(() => window.close(), 1000);
+        }
+    </script>
+</body>
+</html>

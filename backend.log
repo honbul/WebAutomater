@@ -1,0 +1,646 @@
+INFO:     Started server process [1661846]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8002 (Press CTRL+C to quit)
+INFO:     127.0.0.1:49694 - "POST /record/start HTTP/1.1" 200 OK
+INFO:recorder:Initializing Playwright...
+INFO:recorder:Launching browser...
+INFO:recorder:Navigating to https://etk.srail.kr/main.do...
+INFO:     127.0.0.1:49694 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Recorder ready on https://etk.srail.kr/main.do. Waiting for user interaction...
+INFO:     127.0.0.1:49694 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49694 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'input', 'selector': 'select#dptRsStnCd', 'value': '0551', 'timestamp': 1767940828209}
+INFO:recorder:Captured Event: {'type': 'change', 'selector': 'select#dptRsStnCd', 'value': '0551', 'timestamp': 1767940828211}
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'select#dptRsStnCd', 'timestamp': 1767940828212}
+INFO:     127.0.0.1:49694 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49694 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'input', 'selector': 'select#arvRsStnCd', 'value': '0552', 'timestamp': 1767940830487}
+INFO:recorder:Captured Event: {'type': 'change', 'selector': 'select#arvRsStnCd', 'value': '0552', 'timestamp': 1767940830489}
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'select#arvRsStnCd', 'timestamp': 1767940830489}
+INFO:     127.0.0.1:49694 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49694 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'form#search-form > fieldset > div > div > button:nth-of-type(2)', 'timestamp': 1767940832155}
+INFO:     127.0.0.1:49694 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49694 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49694 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49694 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49694 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Stopping recording...
+INFO:recorder:Closing browser...
+INFO:recorder:Stop event received. Cleaning up...
+INFO:recorder:Stopping recording...
+INFO:recorder:Closing browser...
+INFO:recorder:Stopping Playwright...
+INFO:recorder:Recording session ended successfully.
+INFO:recorder:Recording session ended successfully.
+INFO:     127.0.0.1:49694 - "POST /record/stop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49694 - "POST /run HTTP/1.1" 200 OK
+INFO:recorder:Starting workflow execution on https://etk.srail.kr/main.do with 7 actions
+INFO:recorder:Executing Input: select#dptRsStnCd -> 0551
+ERROR:recorder:Failed to fill select#dptRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptRsStnCd")
+    - locator resolved to <select id="dptRsStnCd" name="dptRsStnCd" aria-label="출발역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0551")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptRsStnCd -> 0551
+INFO:recorder:Executing Click: select#dptRsStnCd
+INFO:recorder:Executing Input: select#arvRsStnCd -> 0552
+ERROR:recorder:Failed to fill select#arvRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#arvRsStnCd")
+    - locator resolved to <select id="arvRsStnCd" name="arvRsStnCd" aria-label="도착역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0552")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#arvRsStnCd -> 0552
+INFO:recorder:Executing Click: select#arvRsStnCd
+INFO:recorder:Executing Click: form#search-form > fieldset > div > div > button:nth-of-type(2)
+INFO:recorder:Workflow execution complete.
+INFO:     127.0.0.1:47236 - "POST /run HTTP/1.1" 200 OK
+INFO:recorder:Starting workflow execution on https://etk.srail.kr/main.do with 7 actions
+INFO:recorder:Executing Input: select#dptRsStnCd -> 0551
+ERROR:recorder:Failed to fill select#dptRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptRsStnCd")
+    - locator resolved to <select id="dptRsStnCd" name="dptRsStnCd" aria-label="출발역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0551")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptRsStnCd -> 0551
+INFO:recorder:Executing Click: select#dptRsStnCd
+INFO:recorder:Executing Input: select#arvRsStnCd -> 0552
+ERROR:recorder:Failed to fill select#arvRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#arvRsStnCd")
+    - locator resolved to <select id="arvRsStnCd" name="arvRsStnCd" aria-label="도착역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0552")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#arvRsStnCd -> 0552
+INFO:recorder:Executing Click: select#arvRsStnCd
+INFO:recorder:Executing Click: form#search-form > fieldset > div > div > button:nth-of-type(2)
+INFO:recorder:Workflow execution complete.
+INFO:     127.0.0.1:38724 - "POST /run HTTP/1.1" 200 OK
+INFO:recorder:Starting workflow execution on https://etk.srail.kr/main.do with 7 actions
+INFO:recorder:Executing Input: select#dptRsStnCd -> 0551
+ERROR:recorder:Failed to fill select#dptRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptRsStnCd")
+    - locator resolved to <select id="dptRsStnCd" name="dptRsStnCd" aria-label="출발역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0551")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptRsStnCd -> 0551
+INFO:recorder:Executing Click: select#dptRsStnCd
+INFO:recorder:Executing Input: select#arvRsStnCd -> 0552
+ERROR:recorder:Failed to fill select#arvRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#arvRsStnCd")
+    - locator resolved to <select id="arvRsStnCd" name="arvRsStnCd" aria-label="도착역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0552")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#arvRsStnCd -> 0552
+INFO:recorder:Executing Click: select#arvRsStnCd
+INFO:recorder:Executing Click: form#search-form > fieldset > div > div > button:nth-of-type(2)
+INFO:recorder:Workflow execution complete.
+INFO:     127.0.0.1:37676 - "POST /run HTTP/1.1" 200 OK
+INFO:recorder:Starting workflow execution on https://etk.srail.kr/main.do with 7 actions
+INFO:recorder:Executing Input: select#dptRsStnCd -> 0551
+ERROR:recorder:Failed to fill select#dptRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptRsStnCd")
+    - locator resolved to <select id="dptRsStnCd" name="dptRsStnCd" aria-label="출발역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0551")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptRsStnCd -> 0551
+INFO:recorder:Executing Click: select#dptRsStnCd
+INFO:recorder:Executing Input: select#arvRsStnCd -> 0552
+ERROR:recorder:Failed to fill select#arvRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#arvRsStnCd")
+    - locator resolved to <select id="arvRsStnCd" name="arvRsStnCd" aria-label="도착역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0552")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#arvRsStnCd -> 0552
+INFO:recorder:Executing Click: select#arvRsStnCd
+INFO:recorder:Executing Click: form#search-form > fieldset > div > div > button:nth-of-type(2)
+INFO:recorder:Workflow execution complete.
+INFO:     127.0.0.1:50758 - "OPTIONS /run HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /run HTTP/1.1" 200 OK
+INFO:recorder:Starting workflow execution on https://etk.srail.kr/main.do with 7 actions
+INFO:recorder:Executing Input: select#dptRsStnCd -> 0551
+ERROR:recorder:Failed to fill select#dptRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptRsStnCd")
+    - locator resolved to <select id="dptRsStnCd" name="dptRsStnCd" aria-label="출발역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0551")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptRsStnCd -> 0551
+INFO:recorder:Executing Click: select#dptRsStnCd
+INFO:recorder:Executing Input: select#arvRsStnCd -> 0552
+ERROR:recorder:Failed to fill select#arvRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#arvRsStnCd")
+    - locator resolved to <select id="arvRsStnCd" name="arvRsStnCd" aria-label="도착역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0552")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#arvRsStnCd -> 0552
+INFO:recorder:Executing Click: select#arvRsStnCd
+INFO:recorder:Executing Click: form#search-form > fieldset > div > div > button:nth-of-type(2)
+INFO:recorder:Workflow execution complete.
+INFO:     127.0.0.1:44398 - "POST /run HTTP/1.1" 200 OK
+INFO:recorder:Starting workflow execution on https://etk.srail.kr/main.do with 7 actions
+INFO:recorder:Executing Input: select#dptRsStnCd -> 0551
+ERROR:recorder:Failed to fill select#dptRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptRsStnCd")
+    - locator resolved to <select id="dptRsStnCd" name="dptRsStnCd" aria-label="출발역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0551")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptRsStnCd -> 0551
+INFO:recorder:Executing Click: select#dptRsStnCd
+INFO:recorder:Executing Input: select#arvRsStnCd -> 0552
+ERROR:recorder:Failed to fill select#arvRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#arvRsStnCd")
+    - locator resolved to <select id="arvRsStnCd" name="arvRsStnCd" aria-label="도착역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0552")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#arvRsStnCd -> 0552
+INFO:recorder:Executing Click: select#arvRsStnCd
+INFO:recorder:Executing Click: form#search-form > fieldset > div > div > button:nth-of-type(2)
+INFO:recorder:Workflow execution complete.
+INFO:     127.0.0.1:43202 - "OPTIONS /modify-workflow HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:43202 - "POST /modify-workflow HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46488 - "POST /run HTTP/1.1" 200 OK
+INFO:recorder:Starting workflow execution on https://etk.srail.kr/main.do with 3 actions
+INFO:recorder:Looping 3 times...
+INFO:recorder:  Loop iteration 1/3
+INFO:recorder:Executing Input: select#dptRsStnCd -> 0551
+ERROR:recorder:Failed to fill select#dptRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptRsStnCd")
+    - locator resolved to <select id="dptRsStnCd" name="dptRsStnCd" aria-label="출발역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0551")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptRsStnCd -> 0551
+INFO:recorder:Executing Click: select#dptRsStnCd
+INFO:recorder:Executing Input: select#arvRsStnCd -> 0552
+ERROR:recorder:Failed to fill select#arvRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#arvRsStnCd")
+    - locator resolved to <select id="arvRsStnCd" name="arvRsStnCd" aria-label="도착역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0552")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#arvRsStnCd -> 0552
+INFO:recorder:  Loop iteration 2/3
+INFO:recorder:Executing Input: select#dptRsStnCd -> 0551
+ERROR:recorder:Failed to fill select#dptRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptRsStnCd")
+    - locator resolved to <select id="dptRsStnCd" name="dptRsStnCd" aria-label="출발역 선택" class="krds-form-select">…</select>
+    - fill("0551")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptRsStnCd -> 0551
+INFO:recorder:Executing Click: select#dptRsStnCd
+INFO:recorder:Executing Input: select#arvRsStnCd -> 0552
+ERROR:recorder:Failed to fill select#arvRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#arvRsStnCd")
+    - locator resolved to <select id="arvRsStnCd" name="arvRsStnCd" aria-label="도착역 선택" class="krds-form-select">…</select>
+    - fill("0552")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#arvRsStnCd -> 0552
+INFO:recorder:  Loop iteration 3/3
+INFO:recorder:Executing Input: select#dptRsStnCd -> 0551
+ERROR:recorder:Failed to fill select#dptRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptRsStnCd")
+    - locator resolved to <select id="dptRsStnCd" name="dptRsStnCd" aria-label="출발역 선택" class="krds-form-select">…</select>
+    - fill("0551")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptRsStnCd -> 0551
+INFO:recorder:Executing Click: select#dptRsStnCd
+INFO:recorder:Executing Input: select#arvRsStnCd -> 0552
+ERROR:recorder:Failed to fill select#arvRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#arvRsStnCd")
+    - locator resolved to <select id="arvRsStnCd" name="arvRsStnCd" aria-label="도착역 선택" class="krds-form-select">…</select>
+    - fill("0552")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#arvRsStnCd -> 0552
+INFO:recorder:Executing Click: select#arvRsStnCd
+INFO:recorder:Executing Click: form#search-form > fieldset > div > div > button:nth-of-type(2)
+INFO:recorder:Workflow execution complete.
+INFO:httpx:HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:38332 - "POST /modify-workflow HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56098 - "POST /run HTTP/1.1" 200 OK
+INFO:recorder:Starting workflow execution on https://etk.srail.kr/main.do with 2 actions
+WARNING:recorder:Loop step missing both 'count' and 'loop_selector'. Skipping.
+INFO:recorder:Executing Click: form#search-form > fieldset > div > div > button:nth-of-type(2)
+INFO:recorder:Workflow execution complete.
+INFO:     127.0.0.1:47024 - "OPTIONS /record/start HTTP/1.1" 200 OK
+INFO:recorder:Stopping recording...
+INFO:recorder:Recording session ended successfully.
+INFO:     127.0.0.1:47024 - "POST /record/start HTTP/1.1" 200 OK
+INFO:recorder:Initializing Playwright...
+INFO:recorder:Launching browser...
+INFO:recorder:Navigating to https://etk.srail.kr/main.do...
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Recorder ready on https://etk.srail.kr/main.do. Waiting for user interaction...
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'input', 'selector': 'select#dptRsStnCd', 'value': '0015', 'timestamp': 1767941044096}
+INFO:recorder:Captured Event: {'type': 'change', 'selector': 'select#dptRsStnCd', 'value': '0015', 'timestamp': 1767941044097}
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'select#dptRsStnCd', 'timestamp': 1767941044098}
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'input', 'selector': 'select#arvRsStnCd', 'value': '0551', 'timestamp': 1767941046557}
+INFO:recorder:Captured Event: {'type': 'change', 'selector': 'select#arvRsStnCd', 'value': '0551', 'timestamp': 1767941046559}
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'select#arvRsStnCd', 'timestamp': 1767941046559}
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'input#cal', 'timestamp': 1767941047778}
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'input#cal', 'timestamp': 1767941049381}
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'input#cal', 'timestamp': 1767941050148}
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'input#cal', 'timestamp': 1767941050951}
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'input#cal', 'timestamp': 1767941053032}
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'input#cal', 'timestamp': 1767941053531}
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'input#cal', 'timestamp': 1767941054161}
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'input#cal', 'timestamp': 1767941054406}
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'input#cal', 'timestamp': 1767941054624}
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'input#cal', 'timestamp': 1767941054830}
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'input', 'selector': 'select#dptTm', 'value': '120000', 'timestamp': 1767941059239}
+INFO:recorder:Captured Event: {'type': 'change', 'selector': 'select#dptTm', 'value': '120000', 'timestamp': 1767941059240}
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'select#dptTm', 'timestamp': 1767941059241}
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'form#search-form > fieldset > div > div > button:nth-of-type(2) > i', 'timestamp': 1767941061696}
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Stopping recording...
+INFO:recorder:Closing browser...
+INFO:recorder:Stop event received. Cleaning up...
+INFO:recorder:Stopping recording...
+INFO:recorder:Closing browser...
+INFO:recorder:Stopping Playwright...
+INFO:recorder:Recording session ended successfully.
+INFO:recorder:Recording session ended successfully.
+INFO:     127.0.0.1:47024 - "POST /record/stop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "POST /run HTTP/1.1" 200 OK
+INFO:recorder:Starting workflow execution on https://etk.srail.kr/main.do with 20 actions
+INFO:recorder:Executing Input: select#dptRsStnCd -> 0015
+ERROR:recorder:Failed to fill select#dptRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptRsStnCd")
+    - locator resolved to <select id="dptRsStnCd" name="dptRsStnCd" aria-label="출발역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0015")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptRsStnCd -> 0015
+INFO:recorder:Executing Click: select#dptRsStnCd
+INFO:recorder:Executing Input: select#arvRsStnCd -> 0551
+ERROR:recorder:Failed to fill select#arvRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#arvRsStnCd")
+    - locator resolved to <select id="arvRsStnCd" name="arvRsStnCd" aria-label="도착역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0551")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#arvRsStnCd -> 0551
+INFO:recorder:Executing Click: select#arvRsStnCd
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Input: select#dptTm -> 120000
+ERROR:recorder:Failed to fill select#dptTm: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptTm")
+    - locator resolved to <select id="dptTm" name="dptTm" title="출발시각 선택" class="krds-form-select">…</select>
+    - fill("120000")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptTm -> 120000
+INFO:recorder:Executing Click: select#dptTm
+INFO:recorder:Executing Click: form#search-form > fieldset > div > div > button:nth-of-type(2) > i
+INFO:recorder:Workflow execution complete.
+INFO:     127.0.0.1:46280 - "POST /run HTTP/1.1" 200 OK
+INFO:recorder:Starting workflow execution on https://etk.srail.kr/main.do with 20 actions
+INFO:recorder:Executing Input: select#dptRsStnCd -> 0015
+ERROR:recorder:Failed to fill select#dptRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptRsStnCd")
+    - locator resolved to <select id="dptRsStnCd" name="dptRsStnCd" aria-label="출발역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0015")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptRsStnCd -> 0015
+INFO:recorder:Executing Click: select#dptRsStnCd
+INFO:recorder:Executing Input: select#arvRsStnCd -> 0551
+ERROR:recorder:Failed to fill select#arvRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#arvRsStnCd")
+    - locator resolved to <select id="arvRsStnCd" name="arvRsStnCd" aria-label="도착역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0551")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#arvRsStnCd -> 0551
+INFO:recorder:Executing Click: select#arvRsStnCd
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Input: select#dptTm -> 120000
+ERROR:recorder:Failed to fill select#dptTm: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptTm")
+    - locator resolved to <select id="dptTm" name="dptTm" title="출발시각 선택" class="krds-form-select">…</select>
+    - fill("120000")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptTm -> 120000
+INFO:recorder:Executing Click: select#dptTm
+INFO:recorder:Executing Click: form#search-form > fieldset > div > div > button:nth-of-type(2) > i
+INFO:recorder:Workflow execution complete.
+INFO:     127.0.0.1:44822 - "POST /run HTTP/1.1" 200 OK
+INFO:recorder:Starting workflow execution on https://etk.srail.kr/main.do with 20 actions
+INFO:recorder:Executing Input: select#dptRsStnCd -> 0015
+ERROR:recorder:Failed to fill select#dptRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptRsStnCd")
+    - locator resolved to <select id="dptRsStnCd" name="dptRsStnCd" aria-label="출발역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0015")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptRsStnCd -> 0015
+INFO:recorder:Executing Click: select#dptRsStnCd
+INFO:recorder:Executing Input: select#arvRsStnCd -> 0551
+ERROR:recorder:Failed to fill select#arvRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#arvRsStnCd")
+    - locator resolved to <select id="arvRsStnCd" name="arvRsStnCd" aria-label="도착역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0551")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#arvRsStnCd -> 0551
+INFO:recorder:Executing Click: select#arvRsStnCd
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Click: input#cal
+INFO:recorder:Executing Input: select#dptTm -> 120000
+ERROR:recorder:Failed to fill select#dptTm: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptTm")
+    - locator resolved to <select id="dptTm" name="dptTm" title="출발시각 선택" class="krds-form-select">…</select>
+    - fill("120000")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptTm -> 120000
+INFO:recorder:Executing Click: select#dptTm
+INFO:recorder:Executing Click: form#search-form > fieldset > div > div > button:nth-of-type(2) > i
+INFO:recorder:Workflow execution complete.
+INFO:recorder:Stopping recording...
+INFO:recorder:Recording session ended successfully.
+INFO:     127.0.0.1:55336 - "POST /record/start HTTP/1.1" 200 OK
+INFO:recorder:Initializing Playwright...
+INFO:recorder:Launching browser...
+INFO:recorder:Navigating to https://etk.srail.kr/main.do...
+INFO:     127.0.0.1:55336 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Recorder ready on https://etk.srail.kr/main.do. Waiting for user interaction...
+INFO:     127.0.0.1:55336 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55336 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'input', 'selector': 'select#dptRsStnCd', 'value': '0552', 'timestamp': 1767941433286}
+INFO:recorder:Captured Event: {'type': 'change', 'selector': 'select#dptRsStnCd', 'value': '0552', 'timestamp': 1767941433288}
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'select#dptRsStnCd', 'timestamp': 1767941433289}
+INFO:     127.0.0.1:55336 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55336 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'input', 'selector': 'select#arvRsStnCd', 'value': '0049', 'timestamp': 1767941435526}
+INFO:recorder:Captured Event: {'type': 'change', 'selector': 'select#arvRsStnCd', 'value': '0049', 'timestamp': 1767941435527}
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'select#arvRsStnCd', 'timestamp': 1767941435528}
+INFO:     127.0.0.1:55336 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55336 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'form#search-form > fieldset > div > div > div:nth-of-type(3) > div:nth-of-type(2) > div > div > button > i', 'timestamp': 1767941437390}
+INFO:     127.0.0.1:55336 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55336 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55336 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55336 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55336 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'form#search-form > fieldset > div > div > button:nth-of-type(2)', 'timestamp': 1767941441804}
+INFO:     127.0.0.1:55336 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55336 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55336 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Stopping recording...
+INFO:recorder:Closing browser...
+INFO:recorder:Stop event received. Cleaning up...
+INFO:recorder:Stopping recording...
+INFO:recorder:Closing browser...
+INFO:recorder:Stopping Playwright...
+INFO:recorder:Recording session ended successfully.
+INFO:recorder:Recording session ended successfully.
+INFO:     127.0.0.1:55336 - "POST /record/stop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55336 - "POST /run HTTP/1.1" 200 OK
+INFO:recorder:Starting workflow execution on https://etk.srail.kr/main.do with 8 actions
+INFO:recorder:Executing Input: select#dptRsStnCd -> 0552
+ERROR:recorder:Failed to fill select#dptRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptRsStnCd")
+    - locator resolved to <select id="dptRsStnCd" name="dptRsStnCd" aria-label="출발역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0552")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptRsStnCd -> 0552
+INFO:recorder:Executing Click: select#dptRsStnCd
+INFO:recorder:Executing Input: select#arvRsStnCd -> 0049
+ERROR:recorder:Failed to fill select#arvRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#arvRsStnCd")
+    - locator resolved to <select id="arvRsStnCd" name="arvRsStnCd" aria-label="도착역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0049")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#arvRsStnCd -> 0049
+INFO:recorder:Executing Click: select#arvRsStnCd
+INFO:recorder:Executing Click: form#search-form > fieldset > div > div > div:nth-of-type(3) > div:nth-of-type(2) > div > div > button > i
+INFO:recorder:Executing Click: form#search-form > fieldset > div > div > button:nth-of-type(2)
+INFO:recorder:Workflow execution complete.
+INFO:recorder:Stopping recording...
+INFO:recorder:Recording session ended successfully.
+INFO:     127.0.0.1:40286 - "POST /record/start HTTP/1.1" 200 OK
+INFO:recorder:Initializing Playwright...
+INFO:recorder:Launching browser...
+INFO:recorder:Navigating to https://etk.srail.kr/main.do...
+INFO:     127.0.0.1:40286 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Recorder ready on https://etk.srail.kr/main.do. Waiting for user interaction...
+INFO:     127.0.0.1:40286 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40286 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'input', 'selector': 'select#dptRsStnCd', 'value': '0551', 'timestamp': 1767941461887}
+INFO:recorder:Captured Event: {'type': 'change', 'selector': 'select#dptRsStnCd', 'value': '0551', 'timestamp': 1767941461889}
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'select#dptRsStnCd', 'timestamp': 1767941461890}
+INFO:     127.0.0.1:40286 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40286 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'input', 'selector': 'select#arvRsStnCd', 'value': '0552', 'timestamp': 1767941464251}
+INFO:recorder:Captured Event: {'type': 'change', 'selector': 'select#arvRsStnCd', 'value': '0552', 'timestamp': 1767941464252}
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'select#arvRsStnCd', 'timestamp': 1767941464252}
+INFO:     127.0.0.1:40286 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40286 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'form#search-form > fieldset > div > div > div:nth-of-type(3) > div:nth-of-type(2) > div > div > button > i', 'timestamp': 1767941465564}
+INFO:     127.0.0.1:40286 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40286 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40286 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40286 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Captured Event: {'type': 'click', 'selector': 'form#search-form > fieldset > div > div > button:nth-of-type(2)', 'timestamp': 1767941470362}
+INFO:     127.0.0.1:40286 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40286 - "GET /record/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40286 - "GET /record/events HTTP/1.1" 200 OK
+INFO:recorder:Stopping recording...
+INFO:recorder:Closing browser...
+INFO:recorder:Stop event received. Cleaning up...
+INFO:recorder:Stopping recording...
+INFO:recorder:Closing browser...
+INFO:recorder:Stopping Playwright...
+INFO:recorder:Recording session ended successfully.
+INFO:recorder:Recording session ended successfully.
+INFO:     127.0.0.1:40286 - "POST /record/stop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40286 - "POST /run HTTP/1.1" 200 OK
+INFO:recorder:Starting workflow execution on https://etk.srail.kr/main.do with 8 actions
+INFO:recorder:Executing Input: select#dptRsStnCd -> 0551
+ERROR:recorder:Failed to fill select#dptRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptRsStnCd")
+    - locator resolved to <select id="dptRsStnCd" name="dptRsStnCd" aria-label="출발역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0551")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptRsStnCd -> 0551
+INFO:recorder:Executing Click: select#dptRsStnCd
+INFO:recorder:Executing Input: select#arvRsStnCd -> 0552
+ERROR:recorder:Failed to fill select#arvRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#arvRsStnCd")
+    - locator resolved to <select id="arvRsStnCd" name="arvRsStnCd" aria-label="도착역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0552")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#arvRsStnCd -> 0552
+INFO:recorder:Executing Click: select#arvRsStnCd
+INFO:recorder:Executing Click: form#search-form > fieldset > div > div > div:nth-of-type(3) > div:nth-of-type(2) > div > div > button > i
+INFO:recorder:Executing Click: form#search-form > fieldset > div > div > button:nth-of-type(2)
+INFO:recorder:Workflow execution complete.
+INFO:     127.0.0.1:58752 - "POST /run HTTP/1.1" 200 OK
+INFO:recorder:Starting workflow execution on https://etk.srail.kr/main.do with 8 actions
+INFO:recorder:Executing Input: select#dptRsStnCd -> 0551
+ERROR:recorder:Failed to fill select#dptRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#dptRsStnCd")
+    - locator resolved to <select id="dptRsStnCd" name="dptRsStnCd" aria-label="출발역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0551")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#dptRsStnCd -> 0551
+INFO:recorder:Executing Click: select#dptRsStnCd
+INFO:recorder:Executing Input: select#arvRsStnCd -> 0552
+ERROR:recorder:Failed to fill select#arvRsStnCd: Page.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+  - waiting for locator("select#arvRsStnCd")
+    - locator resolved to <select id="arvRsStnCd" name="arvRsStnCd" aria-label="도착역 선택" class="krds-form-select placeholder">…</select>
+    - fill("0552")
+  - attempting fill action
+    - waiting for element to be visible, enabled and editable
+
+INFO:recorder:Executing Change (Select): select#arvRsStnCd -> 0552
+INFO:recorder:Executing Click: select#arvRsStnCd
+INFO:recorder:Executing Click: form#search-form > fieldset > div > div > div:nth-of-type(3) > div:nth-of-type(2) > div > div > button > i
+INFO:recorder:Executing Click: form#search-form > fieldset > div > div > button:nth-of-type(2)
+INFO:recorder:Workflow execution complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1661846]
