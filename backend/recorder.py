@@ -446,6 +446,75 @@ class DrissionRunner:
                 logger.error(f"Error executing step {i}: {e}")
 
 
-if __name__ == "__main__":
-    recorder = Recorder()
-    asyncio.run(recorder.start_recording("https://example.com"))
+class DrissionRecorder:
+    def __init__(self):
+        self.events = []
+        self.browser = None
+        self.stop_event = asyncio.Event()
+
+    async def start_recording(self, url: str):
+        try:
+            logger.info("Initializing DrissionPage Recorder...")
+            co = ChromiumOptions()
+            try:
+                self.browser = ChromiumPage(co)
+            except Exception:
+                # Fallback logic
+                from playwright.sync_api import sync_playwright
+
+                with sync_playwright() as p:
+                    browser_path = p.chromium.executable_path
+                    co.set_browser_path(browser_path)
+                    self.browser = ChromiumPage(co)
+
+            # Define fallback injection script that uses fetch
+            INJECTED_JS_FETCH = INJECTED_JS.replace(
+                "window.recordEvent(eventData);",
+                """
+                window.recordEvent(eventData);
+                // Fallback to fetch for Drission
+                fetch('http://localhost:8002/record/event', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(eventData)
+                }).catch(e => console.error('Event sync failed', e));
+                """,
+            )
+
+            logger.info(f"Navigating to {url}...")
+            self.browser.get(url)
+
+            # Handle Cloudflare
+            runner = DrissionRunner()  # Reuse logic
+            runner.handle_cloudflare(self.browser)
+
+            logger.info("Injecting recorder script...")
+            # DrissionPage doesn't have add_init_script, so we just run it.
+            # We might need a loop to re-inject on navigation.
+            self.browser.run_js(INJECTED_JS_FETCH)
+
+            logger.info("DrissionRecorder ready. Waiting for events via API...")
+
+            # Monitoring loop to keep browser open and re-inject script
+            while not self.stop_event.is_set():
+                if not self.browser.process_id:  # Browser closed
+                    break
+                # Optional: Check if page changed and re-inject
+                # For now, just wait. The frontend 'Stop' button sets the event.
+                await asyncio.sleep(1)
+
+        except Exception as e:
+            logger.error(f"Error in DrissionRecorder: {e}")
+        finally:
+            await self.stop_recording()
+
+    async def stop_recording(self):
+        logger.info("Stopping DrissionRecorder...")
+        self.stop_event.set()
+        try:
+            if self.browser:
+                self.browser.quit()
+                self.browser = None
+        except:
+            pass
+        return self.events

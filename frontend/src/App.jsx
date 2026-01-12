@@ -124,9 +124,12 @@ export default function App() {
           return;
         }
 
-        // Start
-        await axios.post(`${API_URL}/record/start`, { url });
-        setRecording(true);
+         // Start
+         await axios.post(`${API_URL}/record/start`, { 
+             url,
+             enable_bypass_mode: window.enableBypass || false
+         });
+         setRecording(true);
         // Reset graph
         setNodes(INITIAL_NODES);
         setEdges([]);
