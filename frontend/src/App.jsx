@@ -395,16 +395,17 @@ export default function App() {
              + Add Step
            </button>
 
-           {!recording && nodes.length > 1 && (
-             <div className="flex items-center gap-2">
-                 <label className="flex items-center gap-2 text-sm text-stone-700 font-medium cursor-pointer">
-                     <input 
-                         type="checkbox" 
-                         className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                         onChange={(e) => window.enableBypass = e.target.checked}
-                     />
-                     Bypass Mode (DrissionPage)
-                 </label>
+           <div className="flex items-center gap-4 ml-auto">
+             <label className="flex items-center gap-2 text-sm text-stone-700 font-medium cursor-pointer bg-stone-100 px-3 py-1.5 rounded-md border border-stone-200">
+                 <input 
+                     type="checkbox" 
+                     className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
+                     onChange={(e) => window.enableBypass = e.target.checked}
+                 />
+                 Bypass Mode
+             </label>
+
+             {!recording && nodes.length > 1 && (
                  <button 
                    onClick={runWorkflow}
                    disabled={executionStatus === 'running'}
@@ -417,8 +418,8 @@ export default function App() {
                    {executionStatus === 'running' ? <Loader2 size={18} className="animate-spin"/> : <Play size={18} />}
                    {executionStatus === 'running' ? 'Running...' : 'Run Workflow'}
                  </button>
-             </div>
-           )}
+             )}
+           </div>
         </div>
         
         {/* Status Bar */}
