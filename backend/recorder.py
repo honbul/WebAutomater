@@ -335,19 +335,38 @@ class DrissionRunner:
     def __init__(self):
         self.browser = None
 
+    def handle_cloudflare(self, tab):
+        logger.info("Checking for Cloudflare protection...")
+        if tab.ele("@id=challenge-stage", timeout=2):
+            logger.info("Cloudflare challenge detected. Attempting to solve...")
+            time.sleep(2)
+            try:
+                iframe = tab.get_frame("@src^https://challenges.cloudflare.com")
+                if iframe:
+                    cb = iframe.ele(
+                        'css:input[type="checkbox"]', timeout=2
+                    ) or iframe.ele("@class=ctp-checkbox-label", timeout=2)
+                    if cb:
+                        cb.click()
+                        logger.info("Clicked Cloudflare checkbox (inside iframe)")
+            except:
+                pass
+
+            time.sleep(5)
+
+        if "Just a moment" in tab.title:
+            logger.warning("Still likely on Cloudflare page.")
+
     def run_workflow(self, url: str, actions: list):
         logger.info(
             f"[Bypass Mode] Starting workflow execution on {url} with {len(actions)} actions"
         )
 
         co = ChromiumOptions()
-        # Headless=False is implied for DrissionPage usually, or set via co.headless(False)
-        # co.set_argument('--no-sandbox') # if needed
 
         try:
             self.browser = ChromiumPage(co)
         except Exception:
-            # Fallback to playwright path if system chrome is missing
             try:
                 from playwright.sync_api import sync_playwright
 
@@ -361,7 +380,8 @@ class DrissionRunner:
 
         try:
             self.browser.get(url)
-            # Basic wait for load
+            self.handle_cloudflare(self.browser)
+
             time.sleep(2)
 
             self.execute_steps(self.browser, actions)
@@ -380,12 +400,17 @@ class DrissionRunner:
                 step_type = step.get("type")
                 selector = step.get("selector")
 
-                # Check if element exists on current tab. If not, check latest tab.
                 current_tab = tab
-                if not current_tab.ele(selector):
+
+                ele = current_tab.ele(f"css:{selector}", timeout=10)
+
+                if not ele:
                     latest = self.browser.latest_tab
-                    if latest and latest.ele(selector):
-                        current_tab = latest
+                    if latest and latest != current_tab:
+                        ele = latest.ele(f"css:{selector}", timeout=5)
+                        if ele:
+                            logger.info(f"Element found on latest tab: {latest.title}")
+                            current_tab = latest
 
                 if step_type == "loop":
                     loop_count = step.get("count")
@@ -395,34 +420,26 @@ class DrissionRunner:
                             self.execute_steps(current_tab, inner_steps)
                     continue
 
-                elif step_type == "click":
+                if not ele:
+                    logger.warning(
+                        f"Element {selector} not found after wait. Skipping."
+                    )
+                    continue
+
+                if step_type == "click":
                     logger.info(f"Executing Click (Bypass): {selector}")
-                    ele = current_tab.ele(selector)
-                    if ele:
-                        ele.click()
-                        time.sleep(1)  # Small delay for bypass mode stability
-                    else:
-                        logger.warning(f"Element {selector} not found")
+                    ele.click()
+                    time.sleep(1)
 
                 elif step_type == "input":
                     val = step.get("value", "")
                     logger.info(f"Executing Input (Bypass): {selector} -> {val}")
-                    ele = current_tab.ele(selector)
-                    if ele:
-                        ele.input(val)
+                    ele.input(val)
 
                 elif step_type == "change":
-                    # DrissionPage select
-                    # Assuming standard select or dropdown
-                    # Usually click then click option or special select method?
-                    # DrissionPage doesn't have a direct 'select_option' like Playwright for standard selects in one go easily without knowing it's a select tag
-                    # But ele.select(text) works for <select>
-                    # For custom dropdowns, the recorder would capture clicks.
-                    # Since we are replaying recorder events, if it was a <select> change event, we try to select.
                     val = step.get("value", "")
                     logger.info(f"Executing Change (Bypass): {selector} -> {val}")
-                    ele = current_tab.ele(selector)
-                    if ele and ele.tag == "select":
+                    if ele.tag == "select":
                         ele.select(val)
 
             except Exception as e:

@@ -405,20 +405,18 @@ export default function App() {
                  Bypass Mode
              </label>
 
-             {!recording && nodes.length > 1 && (
-                 <button 
-                   onClick={runWorkflow}
-                   disabled={executionStatus === 'running'}
-                   className={`flex items-center gap-2 px-4 py-2 rounded-md font-medium transition-colors ${
-                       executionStatus === 'running' 
-                       ? 'bg-green-800 text-white cursor-not-allowed'
-                       : 'bg-green-600 text-white hover:bg-green-700'
-                   }`}
-                 >
-                   {executionStatus === 'running' ? <Loader2 size={18} className="animate-spin"/> : <Play size={18} />}
-                   {executionStatus === 'running' ? 'Running...' : 'Run Workflow'}
-                 </button>
-             )}
+             <button 
+               onClick={runWorkflow}
+               disabled={executionStatus === 'running' || (nodes.length <= 1 && !recording)}
+               className={`flex items-center gap-2 px-4 py-2 rounded-md font-medium transition-colors ${
+                   executionStatus === 'running' 
+                   ? 'bg-green-800 text-white cursor-not-allowed'
+                   : 'bg-green-600 text-white hover:bg-green-700'
+               }`}
+             >
+               {executionStatus === 'running' ? <Loader2 size={18} className="animate-spin"/> : <Play size={18} />}
+               {executionStatus === 'running' ? 'Running...' : 'Run Workflow'}
+             </button>
            </div>
         </div>
         
