@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body style="background: #f0f0f0;">
+    <h3>Inner Iframe Content</h3>
+    <button id="popup-button">Click Me (Frame)</button>
+    <script>
+        document.getElementById('popup-button').onclick = () => {
+            document.body.innerHTML += '<p style="color:red">Clicked in Frame!</p>';
+        }
+    </script>
+</body>
+</html>

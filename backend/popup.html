@@ -4,13 +4,10 @@
     <title>Popup Page</title>
 </head>
 <body>
-    <h1>Popup</h1>
-    <button id="popup-button">Click Me</button>
+    <h1>Popup Frame Parent</h1>
+    <iframe src="popup_inner.html" style="width:300px; height:200px;"></iframe>
     <script>
-        document.getElementById('popup-button').onclick = () => {
-            document.body.innerHTML += '<p>Clicked!</p>';
-            setTimeout(() => window.close(), 1000);
-        }
+        setTimeout(() => window.close(), 3000);
     </script>
 </body>
 </html>

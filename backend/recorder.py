@@ -2,6 +2,8 @@ import asyncio
 from playwright.async_api import async_playwright
 import json
 import logging
+from DrissionPage import ChromiumPage, ChromiumOptions
+import time
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -98,8 +100,8 @@ class Recorder:
         try:
             logger.info("Initializing Playwright...")
             self.playwright = await async_playwright().start()
-            logger.info("Launching browser...")
-            self.browser = await self.playwright.chromium.launch(headless=False)
+            logger.info("Launching browser (Firefox)...")
+            self.browser = await self.playwright.firefox.launch(headless=False)
 
             self.context = await self.browser.new_context()
             self.page = await self.context.new_page()
@@ -176,7 +178,7 @@ class Runner:
         logger.info(f"Starting workflow execution on {url} with {len(actions)} actions")
         async with async_playwright() as p:
             try:
-                browser = await p.chromium.launch(headless=False)
+                browser = await p.firefox.launch(headless=False)
                 self.context = await browser.new_context()
                 self.active_page = await self.context.new_page()
                 self.pages.append(self.active_page)
@@ -324,6 +326,104 @@ class Runner:
                     value = step.get("value", "")
                     logger.info(f"Executing Change: {selector} -> {value}")
                     await self.active_page.select_option(selector, value)
+
+            except Exception as e:
+                logger.error(f"Error executing step {i}: {e}")
+
+
+class DrissionRunner:
+    def __init__(self):
+        self.browser = None
+
+    def run_workflow(self, url: str, actions: list):
+        logger.info(
+            f"[Bypass Mode] Starting workflow execution on {url} with {len(actions)} actions"
+        )
+
+        co = ChromiumOptions()
+        # Headless=False is implied for DrissionPage usually, or set via co.headless(False)
+        # co.set_argument('--no-sandbox') # if needed
+
+        try:
+            self.browser = ChromiumPage(co)
+        except Exception:
+            # Fallback to playwright path if system chrome is missing
+            try:
+                from playwright.sync_api import sync_playwright
+
+                with sync_playwright() as p:
+                    browser_path = p.chromium.executable_path
+                    co.set_browser_path(browser_path)
+                    self.browser = ChromiumPage(co)
+            except Exception as e:
+                logger.error(f"Failed to initialize DrissionPage: {e}")
+                return
+
+        try:
+            self.browser.get(url)
+            # Basic wait for load
+            time.sleep(2)
+
+            self.execute_steps(self.browser, actions)
+
+            logger.info("Workflow execution complete.")
+            time.sleep(5)
+        except Exception as e:
+            logger.error(f"Critical error during bypass workflow execution: {e}")
+        finally:
+            if self.browser:
+                self.browser.quit()
+
+    def execute_steps(self, tab, steps):
+        for i, step in enumerate(steps):
+            try:
+                step_type = step.get("type")
+                selector = step.get("selector")
+
+                # Check if element exists on current tab. If not, check latest tab.
+                current_tab = tab
+                if not current_tab.ele(selector):
+                    latest = self.browser.latest_tab
+                    if latest and latest.ele(selector):
+                        current_tab = latest
+
+                if step_type == "loop":
+                    loop_count = step.get("count")
+                    inner_steps = step.get("inner_steps", [])
+                    if loop_count:
+                        for _ in range(int(loop_count)):
+                            self.execute_steps(current_tab, inner_steps)
+                    continue
+
+                elif step_type == "click":
+                    logger.info(f"Executing Click (Bypass): {selector}")
+                    ele = current_tab.ele(selector)
+                    if ele:
+                        ele.click()
+                        time.sleep(1)  # Small delay for bypass mode stability
+                    else:
+                        logger.warning(f"Element {selector} not found")
+
+                elif step_type == "input":
+                    val = step.get("value", "")
+                    logger.info(f"Executing Input (Bypass): {selector} -> {val}")
+                    ele = current_tab.ele(selector)
+                    if ele:
+                        ele.input(val)
+
+                elif step_type == "change":
+                    # DrissionPage select
+                    # Assuming standard select or dropdown
+                    # Usually click then click option or special select method?
+                    # DrissionPage doesn't have a direct 'select_option' like Playwright for standard selects in one go easily without knowing it's a select tag
+                    # But ele.select(text) works for <select>
+                    # For custom dropdowns, the recorder would capture clicks.
+                    # Since we are replaying recorder events, if it was a <select> change event, we try to select.
+                    val = step.get("value", "")
+                    logger.info(f"Executing Change (Bypass): {selector} -> {val}")
+                    ele = current_tab.ele(selector)
+                    if ele and ele.tag == "select":
+                        ele.select(val)
 
             except Exception as e:
                 logger.error(f"Error executing step {i}: {e}")

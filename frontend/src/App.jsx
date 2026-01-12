@@ -190,7 +190,8 @@ export default function App() {
 
       await axios.post(`${API_URL}/run`, {
         url: url,
-        actions: currentWorkflow
+        actions: currentWorkflow,
+        enable_bypass_mode: window.enableBypass || false
       });
       
       setExecutionStatus('success');
@@ -395,18 +396,28 @@ export default function App() {
            </button>
 
            {!recording && nodes.length > 1 && (
-             <button 
-               onClick={runWorkflow}
-               disabled={executionStatus === 'running'}
-               className={`flex items-center gap-2 px-4 py-2 rounded-md font-medium transition-colors ${
-                   executionStatus === 'running' 
-                   ? 'bg-green-800 text-white cursor-not-allowed'
-                   : 'bg-green-600 text-white hover:bg-green-700'
-               }`}
-             >
-               {executionStatus === 'running' ? <Loader2 size={18} className="animate-spin"/> : <Play size={18} />}
-               {executionStatus === 'running' ? 'Running...' : 'Run Workflow'}
-             </button>
+             <div className="flex items-center gap-2">
+                 <label className="flex items-center gap-2 text-sm text-stone-700 font-medium cursor-pointer">
+                     <input 
+                         type="checkbox" 
+                         className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
+                         onChange={(e) => window.enableBypass = e.target.checked}
+                     />
+                     Bypass Mode (DrissionPage)
+                 </label>
+                 <button 
+                   onClick={runWorkflow}
+                   disabled={executionStatus === 'running'}
+                   className={`flex items-center gap-2 px-4 py-2 rounded-md font-medium transition-colors ${
+                       executionStatus === 'running' 
+                       ? 'bg-green-800 text-white cursor-not-allowed'
+                       : 'bg-green-600 text-white hover:bg-green-700'
+                   }`}
+                 >
+                   {executionStatus === 'running' ? <Loader2 size={18} className="animate-spin"/> : <Play size={18} />}
+                   {executionStatus === 'running' ? 'Running...' : 'Run Workflow'}
+                 </button>
+             </div>
            )}
         </div>
         
